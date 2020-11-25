@@ -2,6 +2,7 @@
 using ClientLibrary;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 
 namespace ChatClient
@@ -36,48 +37,7 @@ namespace ChatClient
             var messageHandleThread = new Thread(messageHandleThreadStart);
             messageHandleThread.Start();
         }
-
-        /*static void CheckSavedMessages(string username)
-        {
-            var checkMessages = new CheckPrivateMessages
-            {
-                Username = username
-            };
-            SendMessage(JsonSerializer.Serialize(checkMessages));
-        }
-
-        static void SendDirectMessage(string input)
-        {
-            try
-            {
-                var s = input.Split(" ");
-                var message = "";
-                for (int i = 2; i < s.Length; i++)
-                {
-                    message += s[i] + " ";
-                }
-                message = message.TrimEnd(' ');
-                // Prepare chat message
-                var directMessage = new DirectChatMessage
-                {
-                    Content = message,
-                    SessionId = SessionId,
-                    ToUserId = Convert.ToInt32(s[1])
-                };
-
-                // Send message
-                SendMessage(JsonSerializer.Serialize(directMessage));
-            }
-            catch (ArgumentNullException e)
-            {
-                Console.WriteLine("ArgumentNullException: {0}", e);
-            }
-            catch (SocketException e)
-            {
-                Console.WriteLine("SocketException: {0}", e);
-            }
-        }
-        
+       
         static void PrintUsers()
         {
             var s = "";
@@ -99,7 +59,7 @@ namespace ChatClient
                 Console.WriteLine("Id: " + id);
             }
         }
-         */
+         
 
         static void Main()
         {
@@ -127,24 +87,24 @@ namespace ChatClient
                     {
 
                     }
-                    //CheckSavedMessages(username);
+                    Client.CheckSavedMessages(username);
                     while (Client.IsConnected)
                     {
                         Console.WriteLine("Nachricht eingeben:");
                         var input = Console.ReadLine();
-                        //if (input.StartsWith("/user") && input != "/users")
-                        //ReturnId(input);
-                        /*else*/ /*if (input.StartsWith("/message"))*/
-                        /*{
+                        if (input.StartsWith("/user") && input != "/users")
+                        ReturnId(input);
+                        else if (input.StartsWith("/message"))
+                        {
                             Client.SendDirectMessage(input);
                             continue;
                         }
-                        else*/
+                        else
                         switch (input)
                         {
-                            /*case "/users":
-                                Client.PrintUsers();
-                                break;*/
+                            case "/users":
+                                PrintUsers();
+                                break;
                             case "/disconnect":
                                 Client.Disconnect();
                                 break;

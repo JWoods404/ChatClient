@@ -172,5 +172,46 @@ namespace ClientLibrary
             };
             SendMessage(JsonSerializer.Serialize(userListRequestMessage));
         }
+
+        public void CheckSavedMessages(string username)
+        {
+            var checkMessages = new CheckPrivateMessages
+            {
+                Username = username
+            };
+            SendMessage(JsonSerializer.Serialize(checkMessages));
+        }
+
+        public void SendDirectMessage(string input)
+        {
+            try
+            {
+                var s = input.Split(" ");
+                var message = "";
+                for (int i = 2; i < s.Length; i++)
+                {
+                    message += s[i] + " ";
+                }
+                message = message.TrimEnd(' ');
+                // Prepare chat message
+                var directMessage = new DirectChatMessage
+                {
+                    Content = message,
+                    SessionId = SessionId,
+                    ToUserId = Convert.ToInt32(s[1])
+                };
+
+                // Send message
+                SendMessage(JsonSerializer.Serialize(directMessage));
+            }
+            catch (ArgumentNullException e)
+            {
+                Console.WriteLine("ArgumentNullException: {0}", e);
+            }
+            catch (SocketException e)
+            {
+                Console.WriteLine("SocketException: {0}", e);
+            }
+        }
     }
 }

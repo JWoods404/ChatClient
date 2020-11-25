@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30711.63
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatClient", "ChatClient\ChatClient.csproj", "{D34FE7BA-4E1B-43A7-B764-E7ED2DFBE0E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatClient", "ChatClient\ChatClient.csproj", "{D34FE7BA-4E1B-43A7-B764-E7ED2DFBE0E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientLibrary", "ClientLibrary\ClientLibrary.csproj", "{BE414E6F-985B-4A3E-849D-646C6F114A4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientLibrary", "ClientLibrary\ClientLibrary.csproj", "{BE414E6F-985B-4A3E-849D-646C6F114A4F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReferencedAssemblies", "ReferencedAssemblies", "{A0387FD3-9D74-469E-B080-9BDF662ABF0B}"
 	ProjectSection(SolutionItems) = preProject
-		ReferencedAssemblies\ChatProtocol.dll = ReferencedAssemblies\ChatProtocol.dll
+		..\ChatServer\ChatProtocol\bin\Debug\netcoreapp3.1\ChatProtocol.dll = ..\ChatServer\ChatProtocol\bin\Debug\netcoreapp3.1\ChatProtocol.dll
 	EndProjectSection
 EndProject
 Global
