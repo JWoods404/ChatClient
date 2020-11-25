@@ -87,7 +87,7 @@ namespace ChatClient
                     {
 
                     }
-                    Client.CheckSavedMessages(username);
+                    if (Client.IsConnected) Client.CheckSavedMessages(username);
                     while (Client.IsConnected)
                     {
                         Console.WriteLine("Nachricht eingeben:");
